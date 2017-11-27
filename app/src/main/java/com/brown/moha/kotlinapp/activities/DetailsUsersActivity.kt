@@ -1,7 +1,8 @@
-package com.brown.moha.kotlinapp
+package com.brown.moha.kotlinapp.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.brown.moha.kotlinapp.R
 import kotlinx.android.synthetic.main.activity_details_users.*
 
 class DetailsUsersActivity : AppCompatActivity() {

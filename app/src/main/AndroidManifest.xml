@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".SignInActivity">
+        <activity android:name=".activities.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,17 +20,17 @@
         </activity>
 
         <activity
-            android:name=".ListOfTargetedUsersActivity"
+            android:name=".activities.ListOfTargetedUsersActivity"
             android:label="@string/title_activity_target_users"
             android:theme="@style/AppTheme" />
 
-        <activity android:name=".DetailsUsersActivity" />
+        <activity android:name=".activities.DetailsUsersActivity" />
 
-        <activity android:name=".ConnectWithActivity" />
+        <activity android:name=".activities.ConnectWithActivity" />
 
-        <activity android:name=".SubmitFormActivity" />
+        <activity android:name=".activities.SubmitFormActivity" />
 
-        <activity android:name=".UpdateProfileActivity" />
+        <activity android:name=".activities.UpdateProfileActivity" />
 
         <service
             android:name=".ParseUrlIntentService"

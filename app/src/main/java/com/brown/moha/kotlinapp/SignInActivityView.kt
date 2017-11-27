@@ -5,14 +5,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 /**
  *
  */
-interface SignInView {
+interface SignInActivityView {
 
     fun onFirebaseAuthCheckCurrentUser()
     fun signIn()
-    fun onFirebaseAuthWithGoogle(acct: GoogleSignInAccount?)
-    fun startServiceWithSettingAlarm()
+    fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?)
+    fun settingServiceAlarm()
     fun hideLoadingBar()
     fun showLoadingBar()
-    fun getSubmitformState(): Boolean
+    fun getSubmitformStateInPrefs(): Boolean
     fun setupGoogleSignRequestOnDevice()
 }

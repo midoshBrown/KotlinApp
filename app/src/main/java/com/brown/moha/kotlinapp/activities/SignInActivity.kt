@@ -1,4 +1,4 @@
-package com.brown.moha.kotlinapp
+package com.brown.moha.kotlinapp.activities
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.brown.moha.kotlinapp.ParseUrlIntentService
+import com.brown.moha.kotlinapp.R
+import com.brown.moha.kotlinapp.SignInActivityView
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,12 +23,18 @@ import org.jetbrains.anko.toast
 import java.util.*
 
 
-class SignInActivity : AppCompatActivity() ,SignInView {
+class SignInActivity : AppCompatActivity() , SignInActivityView {
 
     private val RC_SIGN_IN=2
     private lateinit var mGoogleApiClient: GoogleApiClient
     private lateinit var mAuth: FirebaseAuth
     private lateinit var  mAuthListener:FirebaseAuth.AuthStateListener
+
+    override fun onStart() {
+        super.onStart()
+        settingServiceAlarm() //set the alarm that fires the service in first launch then start it every ~4h
+        mAuth.addAuthStateListener(mAuthListener)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +45,6 @@ class SignInActivity : AppCompatActivity() ,SignInView {
 //        val htmlIntent = Intent(this, ParseUrlIntentService::class.java)
 //        htmlIntent.data= Uri.parse("http://ulfds1.ul.edu.lb/")
 //        startService(htmlIntent) //original
-
-        // hideLoadingBar()//hide loading bar
-//        val ref=this.asReference()
-        //var presenter=SignInActivityPresenter(this)
-
-
-        startServiceWithSettingAlarm() //set the alarm that fires the service in first launch then start it every ~4h
 
         onFirebaseAuthCheckCurrentUser()//open the corresponding activity based on current user
 
@@ -64,7 +66,7 @@ class SignInActivity : AppCompatActivity() ,SignInView {
             if (result.isSuccess) {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = result.signInAccount
-                onFirebaseAuthWithGoogle(account)
+                firebaseAuthWithGoogle(account)
                 //startActivity<SubmitFormActivity>()
 
             } else {
@@ -76,14 +78,11 @@ class SignInActivity : AppCompatActivity() ,SignInView {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        mAuth.addAuthStateListener(mAuthListener)
-    }
+
 ////////////////////////////////////////////////////////////////////////////////
     override fun onFirebaseAuthCheckCurrentUser() {
 
-        val isFormSubmitted= getSubmitformState()//check if the form has been submitted or not
+        val isFormSubmitted= getSubmitformStateInPrefs()//check if the form has been submitted or not
         mAuthListener=FirebaseAuth.AuthStateListener {
             firebaseAuth ->
             if(firebaseAuth.currentUser!=null) {
@@ -102,8 +101,8 @@ class SignInActivity : AppCompatActivity() ,SignInView {
 
     }
 
-    override fun onFirebaseAuthWithGoogle(acct: GoogleSignInAccount?) {
-        //Log.d(FragmentActivity.TAG, "onFirebaseAuthWithGoogle:" + acct.id!!)
+    override fun firebaseAuthWithGoogle(acct: GoogleSignInAccount?) {
+        //Log.d(FragmentActivity.TAG, "firebaseAuthWithGoogle:" + acct.id!!)
 
         val credential = GoogleAuthProvider.getCredential(acct?.idToken, null)
         mAuth.signInWithCredential(credential)
@@ -113,13 +112,14 @@ class SignInActivity : AppCompatActivity() ,SignInView {
                     } else {
                         // If sign in fails, display a message to the user.
                         toast("Authentication Failed,Please Try Again")
+                        hideLoadingBar()
                     }
 
                     // ...
                 }
     }
 
-    override fun startServiceWithSettingAlarm(){
+    override fun settingServiceAlarm(){
 
         val intent = Intent(this, ParseUrlIntentService::class.java)
         val alarmIntent= PendingIntent.getService(this,0,intent,0)
@@ -139,7 +139,7 @@ class SignInActivity : AppCompatActivity() ,SignInView {
         progressBar2.visibility= View.VISIBLE
     }
 
-    override fun getSubmitformState(): Boolean {
+    override fun getSubmitformStateInPrefs(): Boolean {
         val sharedPref = getSharedPreferences("MyPrefsFile", Context.MODE_PRIVATE)
         val isFormSubmitted = sharedPref.getBoolean("isFormSubmitted",false)
         //println("sharedTest1 " + isFormSubmitted)

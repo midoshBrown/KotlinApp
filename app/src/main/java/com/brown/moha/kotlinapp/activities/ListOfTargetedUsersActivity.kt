@@ -1,4 +1,4 @@
-package com.brown.moha.kotlinapp
+package com.brown.moha.kotlinapp.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import com.brown.moha.kotlinapp.CustomAdapter
+import com.brown.moha.kotlinapp.OnItemClickListener
+import com.brown.moha.kotlinapp.R
+import com.brown.moha.kotlinapp.User
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_target_users.*
@@ -64,10 +68,10 @@ class ListOfTargetedUsersActivity : AppCompatActivity(), OnItemClickListener {
                   if (task.isSuccessful) {
                       for (document in task.result) {
                           Log.d(TAG, document.id + " => " + document.data)
-                          val usr=User(name = document.data["name"].toString(),phoneEmail = document.data["phoneEmail"].toString())
+                          val usr= User(name = document.data["name"].toString(), phoneEmail = document.data["phoneEmail"].toString())
                           users.add(usr)
                           //creating our adapter
-                          val adapter = CustomAdapter(users,this)
+                          val adapter = CustomAdapter(users, this)
 
                           //now adding the adapter to recyclerview
                           targetUsersRv.adapter = adapter

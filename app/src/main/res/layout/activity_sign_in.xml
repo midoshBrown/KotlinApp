@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="com.brown.moha.kotlinapp.SignInActivity">
+    tools:context="com.brown.moha.kotlinapp.activities.SignInActivity">
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignInBtn"
