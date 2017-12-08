@@ -16,6 +16,7 @@ import org.jetbrains.anko.toast
 
 
 class ConnectWithActivity : AppCompatActivity() {
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_menu, menu)
         return true
@@ -26,7 +27,6 @@ class ConnectWithActivity : AppCompatActivity() {
         when {
             item.itemId == R.id.update_profile -> {
                 startActivity<UpdateProfileActivity>()
-
                 return true
             }
             item.itemId == R.id.log_out -> {
@@ -44,26 +44,11 @@ class ConnectWithActivity : AppCompatActivity() {
         setContentView(R.layout.activity_connect_with)
 
 
-        val yearsAdapter = ArrayAdapter.createFromResource(this, R.array.years_array, android.R.layout.simple_spinner_item)
-        yearsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        yearSpn1.adapter = yearsAdapter
 
+        setupAdaptersForSpinners()
 
-        val majorsAdapter = ArrayAdapter.createFromResource(this, R.array.majors_array, android.R.layout.simple_spinner_item)
-        majorsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        majorSpn1.adapter = majorsAdapter
-
-        val langAdapter = ArrayAdapter.createFromResource(this, R.array.lang_array, android.R.layout.simple_spinner_item)
-        langAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        langSpn1.adapter = langAdapter
-
-        val placesAdapter = ArrayAdapter.createFromResource(this, R.array.places_array, android.R.layout.simple_spinner_item)
-        placesAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        placesAdapter.setNotifyOnChange(true)
-        placeSpn1.adapter = placesAdapter
         val usr = User()
-
-        val spinners = arrayOf(yearSpn1, majorSpn1, langSpn1, placeSpn1)
+        val spinners = arrayOf(yearSpn1, majorSpn1, yearSpn1, majorSpn1)
         for (spn in spinners) {
             spn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -74,24 +59,58 @@ class ConnectWithActivity : AppCompatActivity() {
                     val item = parent?.getItemAtPosition(position).toString()
                     //toast("midosh2 " + item)
                     when (spn) {
-                        yearSpn1 -> if (item !== "none") usr.year = item
-                        majorSpn1 -> if (item !== "none") usr.major = item
-                        langSpn1 -> if (item !== "none") usr.lang = item
-                        placeSpn1 -> if (item !== "none") usr.place = item
+                        yearSpn1 -> usr.year = item
+                        majorSpn1 -> usr.place = item
+                        yearSpn1 -> usr.lang = item
+                        majorSpn1 -> usr.major = item
                     }
                 }
             }
         }
 
-        btnFindStudents.setOnClickListener {
+        findStudentsBtn.setOnClickListener {
 
-            if (usr.year == "none" && usr.major == "none" && usr.lang == "none" && usr.place == "none")
+            val isAllFieldNotSubmitted=usr.year == "none" &&
+                    usr.major == "none" &&
+                    usr.lang == "none" &&
+                    usr.place == "none"
+
+            if (isAllFieldNotSubmitted)
                 toast("plz choose some values")
             else startActivity<ListOfTargetedUsersActivity>("year".to(usr.year),
                     "major".to(usr.major),
                     "lang".to(usr.lang),
                     "place".to(usr.place))
         }
+
+    }
+
+    private fun setupAdaptersForSpinners() {
+        val yearsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.years_array,
+                android.R.layout.simple_spinner_item)
+        yearsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        yearSpn1.adapter = yearsAdapter
+
+
+        val majorsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.majors_array,
+                android.R.layout.simple_spinner_item)
+        majorsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        majorSpn1.adapter = majorsAdapter
+
+        val langAdapter = ArrayAdapter.createFromResource(this,
+                R.array.lang_array,
+                android.R.layout.simple_spinner_item)
+        langAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        yearSpn1.adapter = langAdapter
+
+        val placesAdapter = ArrayAdapter.createFromResource(this,
+                R.array.places_array,
+                android.R.layout.simple_spinner_item)
+        placesAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
+        placesAdapter.setNotifyOnChange(true)
+        majorSpn1.adapter = placesAdapter
     }
 
     override fun onBackPressed() {

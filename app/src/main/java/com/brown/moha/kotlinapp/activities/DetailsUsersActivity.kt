@@ -12,11 +12,11 @@ class DetailsUsersActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details_users)
 
 
-        val intnt= intent
-        val s1=intnt.extras.get("name")
-        val s2=intnt.extras.get("phoneEmail")
-        tx1.text=s1.toString()
-        tx2.text=s2.toString()
+        val newIntent = intent
+        val s1 = newIntent.extras.get("name")
+        val s2 = newIntent.extras.get("phoneNumber")
+        tx1.text = s1.toString()
+        tx2.text = s2.toString()
 
 
     }

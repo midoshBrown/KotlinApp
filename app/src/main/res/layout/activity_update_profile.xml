@@ -203,7 +203,7 @@
                 android:layout_height="20dp" />
 
             <Spinner
-                android:id="@+id/langSpn1"
+                android:id="@+id/yearSpn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dialog"
@@ -215,7 +215,7 @@
                 android:layout_height="20dp" />
 
             <Spinner
-                android:id="@+id/placeSpn1"
+                android:id="@+id/majorSpn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dialog"

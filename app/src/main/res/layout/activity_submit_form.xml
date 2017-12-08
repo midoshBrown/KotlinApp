@@ -7,226 +7,117 @@
     tools:context="com.brown.moha.kotlinapp.activities.SubmitFormActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:id="@+id/form_h_layout"
-        android:layout_width="wrap_content"
+
+    <TextView
+        android:id="@+id/majorTv"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="8dp"
+        android:text="Major"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/majorSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/majorSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/majorSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <LinearLayout
-            android:id="@+id/images_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="27dp"
-            tools:layout_editor_absoluteY="33dp">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <ImageView
-                android:id="@+id/personImv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_person_name"
-                tools:layout_editor_absoluteX="50dp"
-                tools:layout_editor_absoluteY="88dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="85dp" />
-
-            <ImageView
-                android:id="@+id/phone_Imv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_phone_name"
-                tools:layout_editor_absoluteX="50dp"
-                tools:layout_editor_absoluteY="196dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fields_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="99dp"
-            tools:layout_editor_absoluteY="76dp">
-
-            <EditText
-                android:id="@+id/nameEdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="name"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="99dp"
-                tools:layout_editor_absoluteY="50dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <EditText
-                android:id="@+id/lastNameEdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="last name"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="110dp"
-                tools:layout_editor_absoluteY="132dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-            <EditText
-                android:id="@+id/phoneFcbEdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="phone number,fcb name"
-                android:inputType="textPersonName"
-                tools:layout_editor_absoluteX="99dp"
-                tools:layout_editor_absoluteY="231dp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/choices_h_layout"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/placeSpn1"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/submitBtn"
-        app:layout_constraintHorizontal_bias="0.566"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_h_layout"
-        app:layout_constraintVertical_bias="0.045">
+        android:layout_marginTop="32dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/langSpn1" />
 
-        <LinearLayout
-            android:id="@+id/tv_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="121dp"
-            tools:layout_editor_absoluteY="300dp">
+    <TextView
+        android:id="@+id/placeTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Place"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/placeSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/placeSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/placeSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/majorTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Major"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+    <TextView
+        android:id="@+id/yearTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+        android:layout_marginTop="8dp"
+        android:text="Year"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/yearSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/yearTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Year"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+    <TextView
+        android:id="@+id/langTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+        android:layout_marginTop="8dp"
+        android:text="Lang"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/langSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/langSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/langSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/langTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lang"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
+    <Spinner
+        android:id="@+id/langSpn1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearSpn1" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
+    <Spinner
+        android:id="@+id/yearSpn1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorSpn1" />
 
-            <TextView
-                android:id="@+id/placeTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Place"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp" />
-        </LinearLayout>
+    <Spinner
+        android:id="@+id/majorSpn1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phoneNumberEdt" />
 
-        <Space
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/spin_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="270dp"
-            tools:layout_editor_absoluteY="278dp">
-
-            <Spinner
-                android:id="@+id/majorSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="209dp"
-                tools:layout_editor_absoluteY="346dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Spinner
-                android:id="@+id/yearSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="290dp"
-                tools:layout_editor_absoluteY="407dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Spinner
-                android:id="@+id/langSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="77dp"
-                tools:layout_editor_absoluteY="493dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <Spinner
-                android:id="@+id/placeSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="293dp"
-                tools:layout_editor_absoluteY="493dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <!--<View-->
     <!--android:layout_width="fill_parent"-->
@@ -240,9 +131,11 @@
 
     <Button
         android:id="@+id/submitBtn"
-        android:layout_width="0dp"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Submit"
         android:textAllCaps="false"
@@ -263,6 +156,40 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09" />
+
+    <EditText
+        android:id="@+id/phoneNumberEdt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Phone number "
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
 
 
 </android.support.constraint.ConstraintLayout>

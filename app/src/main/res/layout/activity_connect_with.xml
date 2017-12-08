@@ -7,136 +7,127 @@
     tools:context="com.brown.moha.kotlinapp.activities.ConnectWithActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:id="@+id/choices_h_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btnFindStudents"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/tv_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="121dp"
-            tools:layout_editor_absoluteY="300dp">
-
-            <TextView
-                android:id="@+id/majorTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Major"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
-            <TextView
-                android:id="@+id/yearTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Year"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
-            <TextView
-                android:id="@+id/langTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lang"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="25dp" />
-
-            <TextView
-                android:id="@+id/placeTv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Place"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/spin_v_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="270dp"
-            tools:layout_editor_absoluteY="278dp">
-
-            <Spinner
-                android:id="@+id/majorSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="209dp"
-                tools:layout_editor_absoluteY="346dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="32dp" />
-
-            <Spinner
-                android:id="@+id/yearSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="290dp"
-                tools:layout_editor_absoluteY="407dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <Spinner
-                android:id="@+id/langSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="77dp"
-                tools:layout_editor_absoluteY="493dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="32dp" />
-
-            <Spinner
-                android:id="@+id/placeSpn1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                tools:layout_editor_absoluteX="293dp"
-                tools:layout_editor_absoluteY="493dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnFindStudents"
+    <TextView
+        android:id="@+id/majorTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="125dp"
+        android:text="Major"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/majorSpn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/yearTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:text="Year"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorTv" />
+
+    <TextView
+        android:id="@+id/langTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:text="Lang"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearTv" />
+
+    <TextView
+        android:id="@+id/placeTv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="22dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="20dp"
+        android:text="Place"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/majorSpn1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/langTv" />
+
+
+    <Spinner
+        android:id="@+id/majorSpn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/majorTv"
+        app:layout_constraintTop_toTopOf="@+id/majorTv" />
+
+    <Spinner
+        android:id="@+id/yearSpn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/langTv"
+        app:layout_constraintTop_toTopOf="@+id/langTv" />
+
+    <Spinner
+        android:id="@+id/yearSpn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yearTv"
+        app:layout_constraintTop_toTopOf="@+id/yearTv" />
+
+    <Spinner
+        android:id="@+id/majorSpn1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/placeTv"
+        app:layout_constraintTop_toTopOf="@+id/placeTv" />
+
+
+    <!--<View-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:layout_marginTop="204dp"-->
+    <!--android:background="@android:color/darker_gray"-->
+    <!--app:layout_constraintHorizontal_bias="0.0"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <Button
+        android:id="@+id/findStudentsBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:backgroundTint="@color/colorAccent"
         android:text="Find Students"
         android:textAllCaps="false"
@@ -144,7 +135,5 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
