@@ -46,8 +46,8 @@ class SubmitFormActivity : AppCompatActivity() {
                     when (spn) {
                         yearSpn1 -> usr.year = item
                         majorSpn1 -> usr.major = item
-                        yearSpn1 -> usr.lang = item
-                        majorSpn1 -> usr.place = item
+                        langSpn1 -> usr.lang = item
+                        placeSpn1 -> usr.place = item
                     }
                 }
             }
