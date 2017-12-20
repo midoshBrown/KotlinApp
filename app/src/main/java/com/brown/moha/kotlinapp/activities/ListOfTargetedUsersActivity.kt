@@ -27,10 +27,10 @@ class ListOfTargetedUsersActivity : AppCompatActivity(), OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target_users)
 
-        progressBar1.visibility = View.VISIBLE
+        showLoadingBar()
         targetUsersRv.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
         //crating an arraylist to store users using the data class user
-        val users = ArrayList<User>()
+
 
         val newIntent = intent
         val year = newIntent.extras.get("year").toString()
@@ -55,20 +55,22 @@ class ListOfTargetedUsersActivity : AppCompatActivity(), OnItemClickListener {
             }
         }
 
+        val users = ArrayList<User>()
         query.get()
                 .addOnCompleteListener { task ->
                     if (task.isComplete) {
                         // println("myResult  ${task.result.isEmpty}")
                         if (task.result.isEmpty) {
                             toast("No Results Found")
-                            progressBar1.visibility = View.GONE
+                            hideLoadingBar()
                         }
 
                         if (task.isSuccessful) {
                             for (document in task.result) {
                                 Log.d(TAG, document.id + " => " + document.data)
                                 val usr = User(name = document.data["name"].toString(),
-                                        phoneNumber = document.data["phoneNumber"].toString())
+                                        phoneEmail = document.data["phoneEmail"].toString(),
+                                        photoUrl = document.data["photoUrl"].toString())
 
                                 users.add(usr)
                                 //creating our adapter
@@ -76,7 +78,7 @@ class ListOfTargetedUsersActivity : AppCompatActivity(), OnItemClickListener {
 
                                 //now adding the adapter to recyclerview
                                 targetUsersRv.adapter = usersAdapter
-                                progressBar1.visibility = View.GONE
+                                hideLoadingBar()
 
 
                             }
@@ -92,14 +94,19 @@ class ListOfTargetedUsersActivity : AppCompatActivity(), OnItemClickListener {
                     }
 
                 }
-
-
     }
 
-    override fun onItemClicked(s1: String, s2: String) {
+    override fun onItemClicked(s1: String, s2: String, s3: String) {
 
-        toast("hey you callback thank you $s1  $s2")
-        startActivity<DetailsUsersActivity>("name" to s1, "phoneNumber" to s2)
+        //toast("hey you callback thank you $s1  $s2")
+        startActivity<DetailsUsersActivity>("name" to s1, "phoneEmail" to s2, "photoUrl" to s3)
     }
 
+    private fun hideLoadingBar() {
+        progressBar1.visibility = View.GONE
+    }
+
+    private fun showLoadingBar() {
+        progressBar1.visibility = View.VISIBLE
+    }
 }

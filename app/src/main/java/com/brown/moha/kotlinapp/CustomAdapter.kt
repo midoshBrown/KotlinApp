@@ -1,9 +1,11 @@
 package com.brown.moha.kotlinapp
 
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_layout.view.*
 
 /**
@@ -42,7 +44,7 @@ class CustomAdapter(val userList: ArrayList<User>,
         override fun onClick(itemView: View?) {
             //Log.d("RecyclerView", "CLICK!")
             itemClickListener.onItemClicked(itemView?.userNameTv?.text.toString(),
-                    itemView?.userPhoneEmailTv?.text.toString())
+                    itemView?.userPhoneEmailTv?.text.toString(),itemView?.userImageView?.tag.toString())
 
 
         }
@@ -51,8 +53,13 @@ class CustomAdapter(val userList: ArrayList<User>,
         fun bindItems(user: User) {
 
             itemView.userNameTv.text = user.name
+            itemView.userPhoneEmailTv.text = user.phoneEmail
+            itemView.userImageView.tag=user.photoUrl
 
-            itemView.userPhoneEmailTv.text = user.phoneNumber
+            Picasso.with(itemView.userImageView.context)
+                    .load(Uri.parse(user.photoUrl))
+                    .fit()
+                    .into(itemView.userImageView)
 
         }
 

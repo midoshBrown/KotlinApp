@@ -1,6 +1,5 @@
 package com.brown.moha.kotlinapp.activities
 
-import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -22,8 +21,6 @@ class SubmitFormActivity : AppCompatActivity() {
 
     private val TAG = "myMainActivity"
     lateinit var usr: User
-    lateinit var viewModel: ViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +33,25 @@ class SubmitFormActivity : AppCompatActivity() {
         //set each spinner adapter with the adapter that handle the specific array for each one
         setupAdaptersForSpinners()
         usr = User()
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            var userPhotoUrl = ""
+            var userName =""
+            for (profile in user.providerData) {
+                // Id of the provider (ex: google.com)
+                val providerId = profile.providerId
+                // UID specific to the provider
+                val uid = profile.uid
+                // Name, email address, and profile photo Url
+                userName = profile.displayName.toString()
+                val email = profile.email
+                userPhotoUrl = profile.photoUrl.toString()
+
+            }
+            usr.photoUrl = userPhotoUrl
+            usr.name=userName
+        }
+
         val spinners = arrayOf(yearSpn1, majorSpn1, yearSpn1, majorSpn1)
         for (spn in spinners) {
             spn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -56,8 +72,8 @@ class SubmitFormActivity : AppCompatActivity() {
         submitBtn.setOnClickListener {
 
             showLoadingBar()
-            usr.phoneNumber = phoneNumberEdt.text.toString().trim()
-            val isAllFieldsSubmitted = usr.phoneNumber != "" &&
+            usr.phoneEmail = phoneNumberEdt.text.toString().trim()
+            val isAllFieldsSubmitted = usr.phoneEmail != "" &&
                     usr.year != "none" &&
                     usr.major != "none" &&
                     usr.place != "none" &&
@@ -75,7 +91,6 @@ class SubmitFormActivity : AppCompatActivity() {
                             toast("Information Submitted")
                             saveFormStateInPrefs()
                             startActivity<ConnectWithActivity>()
-                            // progressBar3.visibility=View.GONE
                         }
                         .addOnFailureListener { e ->
                             Log.w(TAG, "Error adding document", e)
@@ -109,23 +124,27 @@ class SubmitFormActivity : AppCompatActivity() {
 
     private fun setupAdaptersForSpinners() {
         // Create an ArrayAdapter using the string array and a default spinner layout
-        val yearsAdapter = ArrayAdapter.createFromResource(this, R.array.years_array,
+        val yearsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.years_array,
                 android.R.layout.preference_category)
         yearsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         yearSpn1.adapter = yearsAdapter
         //yearSpn1.setSelection(0)
 
-        val majorsAdapter = ArrayAdapter.createFromResource(this, R.array.majors_array,
+        val majorsAdapter = ArrayAdapter.createFromResource(this,
+                R.array.majors_array,
                 android.R.layout.preference_category)
         majorsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         majorSpn1.adapter = majorsAdapter
 
-        val langAdapter = ArrayAdapter.createFromResource(this, R.array.lang_array,
+        val langAdapter = ArrayAdapter.createFromResource(this,
+                R.array.lang_array,
                 android.R.layout.preference_category)
         langAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         langSpn1.adapter = langAdapter
 
-        val placesAdapter = ArrayAdapter.createFromResource(this, R.array.places_array,
+        val placesAdapter = ArrayAdapter.createFromResource(this,
+                R.array.places_array,
                 android.R.layout.preference_category)
         placesAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         placeSpn1.adapter = placesAdapter

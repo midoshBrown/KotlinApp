@@ -9,106 +9,112 @@
 
     <TextView
         android:id="@+id/majorTv"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="125dp"
+        android:layout_marginTop="8dp"
         android:text="Major"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/majorSpn1"
         app:layout_constraintEnd_toStartOf="@+id/majorSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/majorSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/yearTv"
-        android:layout_width="0dp"
+    <Spinner
+        android:id="@+id/placeSpn1"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="24dp"
-        android:text="Year"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
+        android:layout_marginTop="50dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.66"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/majorTv" />
-
-    <TextView
-        android:id="@+id/langTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="20dp"
-        android:text="Lang"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/yearTv" />
+        app:layout_constraintTop_toBottomOf="@+id/langSpn1" />
 
     <TextView
         android:id="@+id/placeTv"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:text="Place"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/majorSpn1"
+        app:layout_constraintBottom_toBottomOf="@+id/placeSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/placeSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/langTv" />
+        app:layout_constraintTop_toTopOf="@+id/placeSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/yearTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:text="Year"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/yearSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/yearSpn1"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/langTv"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:text="Lang"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/langSpn1"
+        app:layout_constraintEnd_toStartOf="@+id/langSpn1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/langSpn1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
-        android:id="@+id/majorSpn1"
-        android:layout_width="0dp"
+        android:id="@+id/langSpn1"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
+        android:layout_marginTop="50dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/majorTv"
-        app:layout_constraintTop_toTopOf="@+id/majorTv" />
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearSpn1" />
 
     <Spinner
         android:id="@+id/yearSpn1"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
+        android:layout_marginTop="50dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/langTv"
-        app:layout_constraintTop_toTopOf="@+id/langTv" />
-
-    <Spinner
-        android:id="@+id/yearSpn1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
-        android:spinnerMode="dialog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/yearTv"
-        app:layout_constraintTop_toTopOf="@+id/yearTv" />
+        app:layout_constraintHorizontal_bias="0.66"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorSpn1" />
 
     <Spinner
         android:id="@+id/majorSpn1"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="37dp"
         android:spinnerMode="dialog"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/placeTv"
-        app:layout_constraintTop_toTopOf="@+id/placeTv" />
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
 
     <!--<View-->
@@ -123,9 +129,9 @@
 
     <Button
         android:id="@+id/findStudentsBtn"
-        android:layout_width="0dp"
+        android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/colorAccent"
@@ -136,4 +142,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="find student by major,year,lang and place"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

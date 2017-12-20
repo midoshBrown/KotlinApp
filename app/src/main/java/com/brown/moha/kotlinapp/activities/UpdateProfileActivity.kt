@@ -76,9 +76,16 @@ class UpdateProfileActivity : AppCompatActivity() {
             progressBar3.visibility = View.VISIBLE
 //            usr.name = nameEdt.text.toString()
 //            usr.lastName = lastNameEdt.text.toString()
-//            usr.phoneNumber = phoneFcbEdt.text.toString()
+//            usr.phoneEmail = phoneFcbEdt.text.toString()
 
-            if (usr.name != "" && usr.lastName != "" && usr.phoneNumber != "" && usr.year != "none" && usr.major != "none" && usr.place != "none" && usr.lang != "none") {
+            val isAllFormSubmitted = usr.name != "" &&
+                    usr.phoneEmail != "" &&
+                    usr.year != "none" &&
+                    usr.major != "none" &&
+                    usr.place != "none" &&
+                    usr.lang != "none"
+
+            if (isAllFormSubmitted) {
 
                 println("midosh3  " + usr.toString())
                 // Add a new document with a generated ID

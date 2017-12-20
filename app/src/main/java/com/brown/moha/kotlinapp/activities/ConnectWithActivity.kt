@@ -29,6 +29,10 @@ class ConnectWithActivity : AppCompatActivity() {
                 startActivity<UpdateProfileActivity>()
                 return true
             }
+            item.itemId == R.id.settings -> {
+                startActivity<SettingsActivity>()
+                return true
+            }
             item.itemId == R.id.log_out -> {
                 FirebaseAuth.getInstance().signOut()
                 toast("You Sign out")
@@ -43,12 +47,10 @@ class ConnectWithActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connect_with)
 
-
-
         setupAdaptersForSpinners()
 
         val usr = User()
-        val spinners = arrayOf(yearSpn1, majorSpn1, yearSpn1, majorSpn1)
+        val spinners = arrayOf(yearSpn1, majorSpn1, langSpn1, placeSpn1)
         for (spn in spinners) {
             spn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -57,11 +59,11 @@ class ConnectWithActivity : AppCompatActivity() {
 
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                     val item = parent?.getItemAtPosition(position).toString()
-                    //toast("midosh2 " + item)
+//                    toast("midosh2 " + item)
                     when (spn) {
                         yearSpn1 -> usr.year = item
-                        majorSpn1 -> usr.place = item
-                        yearSpn1 -> usr.lang = item
+                        placeSpn1 -> usr.place = item
+                        langSpn1 -> usr.lang = item
                         majorSpn1 -> usr.major = item
                     }
                 }
@@ -70,7 +72,7 @@ class ConnectWithActivity : AppCompatActivity() {
 
         findStudentsBtn.setOnClickListener {
 
-            val isAllFieldNotSubmitted=usr.year == "none" &&
+            val isAllFieldNotSubmitted = usr.year == "none" &&
                     usr.major == "none" &&
                     usr.lang == "none" &&
                     usr.place == "none"
@@ -88,29 +90,28 @@ class ConnectWithActivity : AppCompatActivity() {
     private fun setupAdaptersForSpinners() {
         val yearsAdapter = ArrayAdapter.createFromResource(this,
                 R.array.years_array,
-                android.R.layout.simple_spinner_item)
+                android.R.layout.preference_category)
         yearsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         yearSpn1.adapter = yearsAdapter
 
 
         val majorsAdapter = ArrayAdapter.createFromResource(this,
                 R.array.majors_array,
-                android.R.layout.simple_spinner_item)
+                android.R.layout.preference_category)
         majorsAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
         majorSpn1.adapter = majorsAdapter
 
         val langAdapter = ArrayAdapter.createFromResource(this,
                 R.array.lang_array,
-                android.R.layout.simple_spinner_item)
+                android.R.layout.preference_category)
         langAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        yearSpn1.adapter = langAdapter
+        langSpn1.adapter = langAdapter
 
         val placesAdapter = ArrayAdapter.createFromResource(this,
                 R.array.places_array,
-                android.R.layout.simple_spinner_item)
+                android.R.layout.preference_category)
         placesAdapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice)
-        placesAdapter.setNotifyOnChange(true)
-        majorSpn1.adapter = placesAdapter
+        placeSpn1.adapter = placesAdapter
     }
 
     override fun onBackPressed() {
